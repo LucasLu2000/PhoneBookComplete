@@ -16,8 +16,8 @@
 #include <cppconn/prepared_statement.h>
 
 #define HOST "localhost"
-#define USER "skon"
-#define DB "skon"
+#define USER "lu1"
+#define DB "lu1"
 
 using namespace std;
 //using namespace sql::mysql;
@@ -28,7 +28,7 @@ int main()
   const string user(USER);
   const string database(DB);
   string pass;
-  
+
   cout << "Connector/C++ Phone Book example" << endl;
   cout << "Enter password for " << user << ":";
   cin >> pass;
@@ -58,11 +58,11 @@ int main()
 	stmt->execute("CALL add_phone('"+first+"', '"+last+"', '"+phone+"', '"+type+"')");
       }
     } while (first.length() > 0);
-      
+
   } catch (sql::SQLException &e) {
 	/*
 	  MySQL Connector/C++ throws three different exceptions:
-	  
+
 	  - sql::MethodNotImplementedException (derived from sql::SQLException)
 	  - sql::InvalidArgumentException (derived from sql::SQLException)
 	  - sql::SQLException (derived from std::runtime_error)
@@ -73,10 +73,10 @@ int main()
     cout << "# ERR: " << e.what();
     cout << " (MySQL error code: " << e.getErrorCode();
     cout << ", SQLState: " << e.getSQLState() << " )" << endl;
-    
+
     return EXIT_FAILURE;
   }
- 
+
   cout << "Done." << endl;
   return EXIT_SUCCESS;
 }

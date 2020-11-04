@@ -16,7 +16,7 @@
 using namespace std;
 using namespace cgicc; // Needed for AJAX functions.
 
-ofstream logfile; 
+ofstream logfile;
 
 int main() {
   Cgicc cgi;    // Ajax object
@@ -24,18 +24,18 @@ int main() {
 
   PhoneBook pb; // Phone Book SQL Interface Object
   vector<PhoneEntry> pbResults;
-  
+
   // Create AJAX objects to recieve information from web page.
   form_iterator op = cgi.getElement("operation");
   string operation = **op;
-  logfile.open("/home/fifo/skonphone.log",ios::out | ios::app);
+  logfile.open("/home/fifo/lu1phone.log",ios::out | ios::app);
   logfile << "Op:" << operation << endl;
   logfile.close();
   string output = "Error = "+operation+ " - Operation not support yet!";
   if (operation == "Find Last") {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
-    
+
     pbResults = pb.findByLast(search);
     if (pbResults.size() > 0) {
       output = "success";
@@ -54,7 +54,7 @@ int main() {
   if (operation == "Find First") {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
-    
+
     pbResults = pb.findByFirst(search);
     if (pbResults.size() > 0) {
       output = "success";
@@ -72,7 +72,7 @@ int main() {
   if (operation == "Find Type") {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
-    
+
     pbResults = pb.findByType(search);
     if (pbResults.size() > 0) {
       output = "success";
@@ -102,7 +102,7 @@ int main() {
     pb.addEntry(addfname,addlname,addphone,addtype);
     output="success";
   }
-  
+
   if(operation=="delete"){
     form_iterator idtodeleteString = cgi.getElement("deleteid");
     string iddelete=**idtodeleteString;
@@ -128,13 +128,12 @@ int main() {
     pb.editEntry(idedit,editfname,editlname,editphone,edittype);
     output="success";
   }
-  
+
   /* send back the results */
   cout << "Content-Type: text/plain\n\n";
 
   cout << output << endl;
-  
-  
+
+
   return 0;
 }
-

@@ -16,14 +16,14 @@ $(document).ready(function () {
 	    $(this).parents(".dropdown").find('.selection').text($(this).text());
 	    operation=$(this).text();
 	    console.log("Main-menu");
-	    changeOperation(operation);	    
+	    changeOperation(operation);
 	} else if ($(this).hasClass("add-item")) {
 	    $(this).parents(".dropdown").find('.selection').text($(this).text());
 	    console.log($(this).text());
 	} else if ($(this).hasClass("edit-item")) {
 	    $(this).parents(".dropdown").find('.selection').text($(this).text());
 	    console.log($(this).text());
-	} 	
+	}
     });
 });
 
@@ -43,7 +43,7 @@ function changeOperation(operation){
 	$('.inputdata').hide();
 	$('.results').show();
 	$('.searchbox').show();
-    }    
+    }
 }
 
 // Build output table from comma delimited list
@@ -62,7 +62,7 @@ function buildTable(list) {
 	    result += "<button type='button' ID='"+a[i+4]+"' class='btn btn-primary btn-sm delete'>Delete</button></td></tr>";
 	}
 	result += "</table>";
-	
+
 	return result;
     }
 }
@@ -140,7 +140,7 @@ function processAdd(results) {
     $('#addfirst').val('');
     $('#addlast').val('');
     $('#addphone').val('');
-    
+
 }
 
 function addEntry(){
@@ -148,12 +148,9 @@ function addEntry(){
     console.log("Firstname:" + $('#addfirst').val());
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/skon_phoneAppComplete.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
+	url: '/cgi-bin/lu1_phoneAppComplete.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
 	dataType: 'text',
 	success: processAdd,
 	error: function(){alert("Error: Something went wrong");}
     });
 }
-
-
-    

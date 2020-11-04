@@ -19,9 +19,9 @@
 #define PHONEBOOK_H
 
 #define HOST "localhost"
-#define USER "test"
-#define DB "test"
-#define PASS "KenyonTest2020"
+#define USER "lu1"
+#define DB "lu1"
+#define PASS "S219054"
 
 using namespace std;
 
